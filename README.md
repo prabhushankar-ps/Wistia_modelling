@@ -152,13 +152,6 @@ Operational Metrics:
 
 ------------------------------------------------------------------------
 
-## Folder Structure
-
-Wistia_modelling/ │ ├── ETL/ │ ├── bronze_ingestion.py │ ├──
-silver_transformation_pandas.py │ ├── gold_transformation.py │ ├── dags/
-│ └── wistia_pipeline_dag.py │ └── README.md
-
-------------------------------------------------------------------------
 
 ## Future Enhancements
 

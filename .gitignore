@@ -1,3 +1,10 @@
+# Virtual environments
+venv/
+.venv/
 vevn/
+env/
 .env
 .DS_Store
+
+# Shell config (never commit this)
+.zshrc

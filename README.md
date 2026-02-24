@@ -45,15 +45,15 @@ Airflow DAG (Scheduled Orchestration)
 -   Layered Data Architecture
 
 ------------------------------------------------------------------------
-
 ## Data Flow
 
 ### Bronze Layer
 
 -   Raw JSON pulled daily from Wistia API
 -   Stored in: s3://wistia-modelling/Bronze_layer/
--   One file per media ID per ingestion date
+-   Date_wise partition
 -   Immutable storage
+-   No data model as raw data
 
 ### Silver Layer
 
@@ -61,13 +61,31 @@ Airflow DAG (Scheduled Orchestration)
 -   Converted to Parquet format
 -   Stored in: s3://wistia-modelling/Silver_layer/
 -   Optimized for query performance
+-   Data Model as show below 
+  
+dim_media (date wise partition) such as s3://wistia-modelling/silverlayer/dim_media/extraction_date=2026-02-24/
+    - media_id
+    - title (name)
+    - URL
+    - created_at
 
-### Gold Layer
+fact_media_engagement (date wise partition) such as s3://wistia-modelling/silverlayer/fact_media_stats/extraction_date=2026-02-24/fact_media_stats.csv
+    - media_id
+    - extraction_date
+    - load_count
+    - play_count
+    - play_rate
+    - hours_watched
+    - engagement
+    - visitors
+
+  ### Gold Layer
 
 -   Business-level aggregations
 -   KPI computations
 -   Analytical summaries
 -   Stored in: s3://wistia-modelling/Gold_layer/
+-   Views created according to dashboard requirements from bronze layer
 
 ------------------------------------------------------------------------
 

@@ -64,20 +64,21 @@ Airflow DAG (Scheduled Orchestration)
 -   Data Model as show below 
   
 dim_media (date wise partition) such as s3://wistia-modelling/silverlayer/dim_media/extraction_date=2026-02-24/
-    - media_id
-    - title (name)
-    - URL
-    - created_at
+1. media_id
+2. title (name)
+3. URL
+4. created_at
 
 fact_media_engagement (date wise partition) such as s3://wistia-modelling/silverlayer/fact_media_stats/extraction_date=2026-02-24/fact_media_stats.csv
-    - media_id
-    - extraction_date
-    - load_count
-    - play_count
-    - play_rate
-    - hours_watched
-    - engagement
-    - visitors
+1. media_id
+2. extraction_date
+3. load_count
+4. play_count
+5. play_rate
+6. hours_watched
+7. engagement
+8. visitors
+
 
   ### Gold Layer
 
